@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+    <style>
+      html {
+        box-sizing: border-box;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: inherit;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .text {
+        position: relative;
+        top: 1px;
+        transition: opacity 0.15s;
+      }
+
+      .checkbox {
+        opacity: 0;
+        position: absolute;
+      }
+
+      .component {
+        user-select: none;
+        color: white;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100px;
+        height: 34px;
+        width: 76px;
+        position: relative;
+        overflow: hidden;
+        transition: background-color 0.15s;
+        background-color: #e53935;
+      }
+
+      .track {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100px;
+        position: absolute;
+        transform: translateX(-22px);
+        transition: transform 0.15s;
+      }
+
+      .checkbox:checked + .container {
+        background-color: #43a047;
+      }
+
+      .checkbox:checked + .container > .track {
+        transform: translate(19px);
+      }
+
+      .no {
+        opacity: 1;
+      }
+
+      .yes {
+        opacity: 0;
+      }
+
+      .checkbox:checked + .container .no {
+        opacity: 0;
+      }
+
+      .checkbox:checked + .container .yes {
+        opacity: 1;
+      }
+
+      .thumb {
+        border-radius: 100px;
+        min-width: 20px;
+        width: 20px;
+        min-height: 20px;
+        height: 20px;
+        margin: 0 8px;
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="component" onclick="toggle()">
+      <input type="checkbox" class="checkbox" />
+      <div class="container">
+        <div class="track">
+          <span class="text yes">YES</span>
+          <span class="thumb"></span>
+          <span class="text no">NO</span>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    function toggle() {
+      const el = document.querySelector('.checkbox');
+      el.checked = !el.checked;
+    }
+  </script>
+</html>
